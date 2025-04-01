@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestapiApplication.class, args);
+		//SpringApplication.run(RestapiApplication.class, args);
+		var orderService = new OrderService(new PaypalPaymentService());
+		orderService.placeOrder();
 	}
 
 }
