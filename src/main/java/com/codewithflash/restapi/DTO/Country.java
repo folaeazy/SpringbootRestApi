@@ -6,8 +6,8 @@ public class Country {
 
     public static Country of(String name, int population) {
         Country country = new Country();
-        country.setName("France");
-        country.setPopulation(100);
+        country.setName(name);
+        country.setPopulation(population);
         return  country;
     }
 
