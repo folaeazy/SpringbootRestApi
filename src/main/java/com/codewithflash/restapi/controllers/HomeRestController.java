@@ -13,8 +13,7 @@ import java.util.List;
 public class HomeRestController {
     @GetMapping("/hellorest")
     public  Country  helloRest() {
-        Country c = Country.of("Egypt", 200);
-        return c;
+        return Country.of("Egypt", 200);
     }
 
     @GetMapping("/hellorest2")
@@ -33,6 +32,5 @@ public class HomeRestController {
                 .header("continent", "Europe")
                 .header("capital", "London")
                 .body(List.of(c1,c2));
-
     }
 }
