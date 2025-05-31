@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.codewithflash.restapi.model.Payment;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -20,19 +20,15 @@ public class PaymentController {
     private final static Logger logger = Logger.getLogger(PaymentController.class.getName());
 
 
-//    public PaymentController(PaymentSystem paymentSystem) {
-//        this.paymentSystem = paymentSystem;
-//    }
-
     @PostMapping("/payment")
-    public ResponseEntity<PaymentDetails> makePayment(
-            @RequestBody PaymentDetails paymentDetails,
-            @RequestHeader String requestId) {
-        logger.info("Received request with ID :  " + paymentDetails.getId() + "Payment amount:  " + paymentDetails.getAmount());
-        paymentDetails.setId(UUID.randomUUID().toString());
+    public ResponseEntity<Payment> createPayment(
+            @RequestHeader String requestId,
+            @RequestBody Payment payment) {
+        logger.info("Received request with ID :  " + requestId + "Payment amount:  " + payment.getAmount());
+        payment.setId(UUID.randomUUID().toString());
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .header("requestId", requestId)
-                .body(paymentDetails);
+                .body(payment);
     }
 }
