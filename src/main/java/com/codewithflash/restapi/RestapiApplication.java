@@ -12,6 +12,7 @@ public class RestapiApplication {
 
 		SpringApplication.run(RestapiApplication.class, args);
 		//var orderService = context.getBean(OrderService.class);
+
 		//orderService.placeOrder();
 
 	}
