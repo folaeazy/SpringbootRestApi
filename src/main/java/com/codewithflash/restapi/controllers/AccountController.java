@@ -3,11 +3,7 @@ package com.codewithflash.restapi.controllers;
 import com.codewithflash.restapi.DTO.TransferRequest;
 import com.codewithflash.restapi.model.Account;
 import com.codewithflash.restapi.services.TransferService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AccountController {
@@ -27,7 +23,10 @@ public class AccountController {
     }
 
     @GetMapping("/accounts")
-    public List<Account> GetAllAccount() {
-        return transferService.GetAllAccounts();
+    public Iterable<Account> getAllAccount(@RequestParam(required = false) String name) {
+        if (name == null) {
+            return transferService.getAllAccounts();
+        }
+        return transferService.findAccountsByName(name);
     }
 }
