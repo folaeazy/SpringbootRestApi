@@ -34,4 +34,8 @@ public class HomeRestController {
                 .body(List.of(c1,c2));
     }
 
+    @GetMapping("/appstatus")
+    public String index() {
+        return "this is the index y'all";
+    }
 }

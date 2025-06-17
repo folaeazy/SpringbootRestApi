@@ -14,12 +14,12 @@ public class LoginController {
     public LoginController(LoginProcessor loginProcessor) {
         this.loginProcessor = loginProcessor;
     }
-    @GetMapping("/")
+    @GetMapping("/login")
     public String getLogin() {
         return "login.html";
     }
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public String loginPost(
           @RequestParam String username,
           @RequestParam  String password,
